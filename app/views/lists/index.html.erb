@@ -1,2 +1,11 @@
-<h1>Lists#index</h1>
-<p>Find me in app/views/lists/index.html.erb</p>
+<h1>投稿一覧</h1>
+
+<!--コントローラで@インスタンス変数に代入したものを-->
+<!--eachでlistの数だけ繰り返して、|list|という変数に代入する-->
+<% @lists.each do |list| %>
+    <p>タイトル</p>
+    <!--|list|の中のtitleを表示-->
+    <span>
+        <%= link_to list.title, list_path(list.id) %>
+    </span>
+<% end %>

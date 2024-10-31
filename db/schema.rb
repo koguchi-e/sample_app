@@ -12,6 +12,7 @@
 
 ActiveRecord::Schema.define(version: 2024_10_30_014359) do
 
+  # テーブルを作成・名前はlsits
   create_table "lists", force: :cascade do |t|
     t.string "title"
     t.string "body"
