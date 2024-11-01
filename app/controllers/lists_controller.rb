@@ -27,11 +27,20 @@ class ListsController < ApplicationController
     @list = List.find(params[:id])
   end
 
+  # 編集機能
   def edit
+    # Listテーブルからデータを取ってきて、インスタンス変数に格納
+    @list = List.find(params[:id])
   end
   
-  private
+  def update
+    list = List.find(params[:id])
+    list.update(list_params)
+    redirect_to list_path(list.id)
+  end
+  
   # ストロングパラメータ
+  private
   def list_params
     params.require(:list).permit(:title, :body)
   end

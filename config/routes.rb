@@ -12,6 +12,8 @@ Rails.application.routes.draw do
   # 詳細画面表示
   get "lists/:id" => "lists#show", as: "list"
   
-  get 'lists/edit'
+  # 編集画面
+  get "lists/:id/edit" => "lists#edit", as: "edit_list"
+  patch "lsits/:id" => "lists#update", as: "update_list"
   # For details on the DSL available within this file, see https://guides.rubyonrails.org/routing.html
 end
