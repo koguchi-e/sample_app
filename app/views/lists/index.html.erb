@@ -3,9 +3,14 @@
 <!--コントローラで@インスタンス変数に代入したものを-->
 <!--eachでlistの数だけ繰り返して、|list|という変数に代入する-->
 <% @lists.each do |list| %>
+
     <p>タイトル</p>
     <!--|list|の中のtitleを表示-->
     <span>
         <%= link_to list.title, list_path(list.id) %>
     </span>
+
+    <p>画像</p>
+    <%= image_tag list.image, size: "200x200" %>
+    
 <% end %>

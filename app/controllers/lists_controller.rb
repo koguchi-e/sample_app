@@ -33,15 +33,27 @@ class ListsController < ApplicationController
     @list = List.find(params[:id])
   end
   
+  # 編集機能(更新機能)
   def update
     list = List.find(params[:id])
     list.update(list_params)
     redirect_to list_path(list.id)
   end
+
+  # 削除機能
+  def destroy
+    # データ（レコード）を1件取得(変数listに代入)
+    list = List.find(params[:id])
+    # データ（レコード）を削除（代入したものを削除）
+    list.destroy
+    # 投稿一覧画面へリダイレクト  
+    redirect_to "/lists"
+  end
+
   
   # ストロングパラメータ
   private
   def list_params
-    params.require(:list).permit(:title, :body)
+    params.require(:list).permit(:title, :body, :image)
   end
 end
