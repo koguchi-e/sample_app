@@ -15,5 +15,8 @@ Rails.application.routes.draw do
   # 編集画面
   get "lists/:id/edit" => "lists#edit", as: "edit_list"
   patch "lsits/:id" => "lists#update", as: "update_list"
+
+  # 削除機能
+  delete "lists/:id" => "list#destroy", as: "destroy_list"
   # For details on the DSL available within this file, see https://guides.rubyonrails.org/routing.html
 end
