@@ -4,14 +4,14 @@ class ListsController < ApplicationController
     @list = List.new
   end
   
-  # 保存機能の作成
+  # 保存機能(11/6,8章修正)
   def create
-    # 1&2.データを受け取り、新規登録するためのインスタンス作成
-    list = List.new(list_params)
-    # 3.データをデータベースに保存するためのsaveメソッド実行
-    list.save
-    # 4.トップ画面へのリダイレクト
-    redirect_to list_path(list.id)
+    @list = List.new(list_params)
+    if @list.save
+      redirect_to list_path(@list.id)
+    else
+      render :new
+    end
   end
 
   # 一覧ページ設定
@@ -42,11 +42,15 @@ class ListsController < ApplicationController
 
   # 削除機能
   def destroy
-    list = List.find(params[:id])  # データ（レコード）を1件取得
-    list.destroy  # データ（レコード）を削除
-    redirect_to '/lists'  # 投稿一覧画面へリダイレクト  
+    # データ（レコード）を1件取得(変数listに代入)
+    list = List.find(params[:id])
+    # データ（レコード）を削除（代入したものを削除）
+    list.destroy
+    # 投稿一覧画面へリダイレクト  
+    redirect_to "/lists"
   end
 
+  
   # ストロングパラメータ
   private
   def list_params
